@@ -21,8 +21,8 @@ function App() {
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
   const [nextUrl, setNextUrl] = useState();
   const [prevUrl, setPrevUrl] = useState();
-  const [filteredData, setFilteredData] = useState(pokeData);
-  const [searchTerm, setSearchTerm] = useState(null);
+  const [pokeDex, setPokeDex] = useState();
+
   const pokeFun = async () => {
     setLoading(true);
     const res = await axios.get(url);
@@ -35,30 +35,17 @@ function App() {
     console.log(res);
     res.map(async (item) => {
       const result = await axios.get(item.url);
-      setFilteredData((state) => {
+      setPokeData((state) => {
         state = [...state, result.data];
         state.sort((a, b) => (a.id > b.id ? 1 : -1));
         return state;
       });
     });
   };
-  console.log(pokeData);
   useEffect(() => {
     pokeFun();
-  }, [url,]);
+  }, [url]);
 
-
-const handleInputChange = (event) => {
-  const newSearchTerm = event.target.value;
-  setSearchTerm(newSearchTerm);
-  // Filter the data based on the search term
-  const filteredResults = filteredData.filter((item) =>
-  item?.name.toLowerCase().includes(newSearchTerm.toLowerCase())
-  );
-  setFilteredData(filteredResults);
-  getPokemon(filteredResults)
-};
-  
   return (
     <div class='container'>
       <div class='upperbox'>
@@ -69,11 +56,9 @@ const handleInputChange = (event) => {
           />
         </div>
         <div class='logo'>
-          <input
-            placeholder='Search...'
-            type='text'
-            className='searchBar'
-            onChange={handleInputChange}
+          <img
+            src='https://seeklogo.com/images/P/Pokemon-logo-497D61B223-seeklogo.com.png'
+            alt=''
           />
         </div>
         <div class='circle'>
@@ -84,7 +69,7 @@ const handleInputChange = (event) => {
         </div>
         <div class='opening-box'></div>
       </div>
-      {filteredData?.map((el) => (
+      {pokeData?.map((el) => (
         <div>
           <div
             class='card'
@@ -96,6 +81,9 @@ const handleInputChange = (event) => {
               <img src={el.sprites.front_default} alt='' />
             </div>
             <div class='card-body'>
+              <div class='type'>
+                <span class='tag tag-normal'>Normal</span>
+              </div>
               <h3>{el.name}</h3>
             </div>
           </div>

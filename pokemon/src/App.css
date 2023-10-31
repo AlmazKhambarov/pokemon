@@ -39,11 +39,6 @@ body {
   margin-left: 10px;
   margin-right: 10px;
 }
-.searchBar{
-  margin-top: 2px;
-  border-radius: 5px;
-  border: none;
-}
 .logo {
   height: 30px;
   margin-left: auto;
@@ -52,6 +47,7 @@ body {
   justify-content: center;
 }
 .card {
+  cursor: pointer;
   margin-top: 30px;
   background-color: #fff;
   border-radius: 10px;
@@ -65,7 +61,7 @@ body {
   /* width: 310px;
   height: 560px; */
   background-color: rgb(235, 233, 233);
-  /* transform: rotate(5deg); */
+  transform: rotate(5deg);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.75);
 }
 .card-header img {

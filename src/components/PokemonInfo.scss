@@ -1,0 +1,207 @@
+/** @format */
+.mainpok{
+
+
+
+  .upperbox {
+    border: 5px;
+    background-color: #e2e2e2;
+    width: 900px;
+    height: 35px;
+    border: 0px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .circle {
+    height: 35px;
+    display: flex;
+    mix-blend-mode: darken;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .logo {
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .card {
+    cursor: pointer;
+    margin-top: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    width: 700px;
+    height: 550px;
+    transition-duration: 2s;
+    /* text-align: center; */
+  }
+  .card:hover {
+    /* width: 310px;
+    height: 560px; */
+    background-color: rgb(235, 233, 233);
+    /* transform: rotate(5deg); */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.75);
+  }
+  .card-header img {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    object-fit: fill;
+  }
+  .card-body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: flex-start; */
+    text-align: center;
+    padding: 20px;
+  }
+  .card-body p {
+    font-size: 12px;
+  }
+  .type {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .tag {
+    background: #cccccc;
+    border-radius: 50px;
+    font-size: 12px;
+    margin-left: 2px;
+    margin-right: 2px;
+    color: #fff;
+    padding: 2px 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .tag-ice {
+    background-color: #66ccff;
+  }
+  .tag-water {
+    background-color: #3399ff;
+  }
+  .tag-ground {
+    background-color: #ddbb55;
+  }
+  .tag-normal {
+    background-color: #aaaa99;
+  }
+  .tag-fire {
+    background-color: #ff4422;
+  }
+  .tag-flying {
+    background-color: #8899ff;
+  }
+  .tag-grass {
+    background-color: #78cc56;
+  }
+  .tag-poison {
+    background-color: #ac5a9c;
+  }
+  .tag-dragon {
+    background-color: #7766ee;
+  }
+  .tag-electric {
+    background-color: #ffcc33;
+  }
+  .tag-psychic {
+    background-color: #ff5599;
+  }
+  .stat {
+    display: flex;
+    flex-wrap: wrap;
+    border: 0px;
+    background-color: rgb(207, 207, 207);
+    height: 80px;
+    border-radius: 20px;
+    justify-content: left;
+    align-content: center;
+    font-size: 12px;
+  }
+  .tak {
+    padding-right: 70px;
+    margin-left: 15px;
+    padding-left: 33px;
+  }
+  .tak b {
+    margin-right: 50px;
+  }
+  .botcir {
+    height: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 95px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: center;
+    mix-blend-mode: darken;
+  }
+  .botcir img {
+    height: 30px;
+    width: auto;
+    padding: 2px;
+    margin-top: 5px;
+    margin-left: 8px;
+    mix-blend-mode: darken;
+  }
+  .pokemon__modal {
+    position: fixed;
+    top: 0%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0 0 0 / 56%);
+  }
+  .pokemon__modal .ability {
+    text-align: center;
+    > p {
+      color: red;
+      background-color: black;
+      display: inline;
+      margin: 0 15px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+  }
+  .pokemon__modal .stats {
+    text-align: center;
+    padding-top: 30px;
+    > ul {
+      list-style-type: none;
+      display: flex;
+      gap: 10px;
+      > li {
+        border: 1px solid red;
+        padding: 5px;
+        border-radius: 3px;
+      }
+    }
+  }
+  .pokemon__modal .back {
+    margin: 10px;
+    cursor: pointer;
+  }
+  .w-screen {
+    background-color: rgb(0 0 0 / 56%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9;
+  }
+
+}
