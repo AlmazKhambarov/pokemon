@@ -21,8 +21,9 @@ function App() {
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
   const [nextUrl, setNextUrl] = useState();
   const [prevUrl, setPrevUrl] = useState();
-  const [filteredData, setFilteredData] = useState(pokeData);
+  const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState(null);
+  const [pokemonData, setPokemonData] = useState([])
   const pokeFun = async () => {
     setLoading(true);
     const res = await axios.get(url);
@@ -35,30 +36,36 @@ function App() {
     console.log(res);
     res.map(async (item) => {
       const result = await axios.get(item.url);
-      setFilteredData((state) => {
+      setPokemonData((state) => {
         state = [...state, result.data];
         state.sort((a, b) => (a.id > b.id ? 1 : -1));
+        console.log(state);
         return state;
       });
     });
   };
-  console.log(pokeData);
+  console.log(filteredData);
   useEffect(() => {
     pokeFun();
-  }, [url,]);
-
-
-const handleInputChange = (event) => {
-  const newSearchTerm = event.target.value;
-  setSearchTerm(newSearchTerm);
-  // Filter the data based on the search term
-  const filteredResults = filteredData.filter((item) =>
-  item?.name.toLowerCase().includes(newSearchTerm.toLowerCase())
-  );
-  setFilteredData(filteredResults);
-  getPokemon(filteredResults)
-};
+  }, [url]);
+useEffect(() => {
   
+  setFilteredData(pokemonData)  
+
+}, [pokemonData,])
+
+  const handleInputChange = (event) => {
+    // const newSearchTerm = event.target.value;
+    let data = filteredData
+    const filteredResults = data.filter((item) =>
+      item?.name.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    setFilteredData(filteredResults);
+    if (!event.target.value) {
+      setFilteredData(pokemonData);
+    }
+  };
+
   return (
     <div class='container'>
       <div class='upperbox'>
