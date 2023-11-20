@@ -23,7 +23,7 @@ function App() {
   const [prevUrl, setPrevUrl] = useState();
   const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState(null);
-  const [pokemonData, setPokemonData] = useState([])
+  const [pokemonData, setPokemonData] = useState([]);
   const pokeFun = async () => {
     setLoading(true);
     const res = await axios.get(url);
@@ -48,15 +48,12 @@ function App() {
   useEffect(() => {
     pokeFun();
   }, [url]);
-useEffect(() => {
-  
-  setFilteredData(pokemonData)  
-
-}, [pokemonData,])
+  useEffect(() => {
+    setFilteredData(pokemonData);
+  }, [pokemonData]);
 
   const handleInputChange = (event) => {
-    // const newSearchTerm = event.target.value;
-    let data = filteredData
+    let data = filteredData;
     const filteredResults = data.filter((item) =>
       item?.name.toLowerCase().includes(event.target.value.toLowerCase())
     );
@@ -65,50 +62,74 @@ useEffect(() => {
       setFilteredData(pokemonData);
     }
   };
-
+  console.log(filteredData);
   return (
-    <div class='container'>
-      <div class='upperbox'>
-        <div class='circle'>
-          <img
-            src='https://i.pinimg.com/736x/b1/06/b3/b106b356085297efb35b87ef9122e03a.jpg'
-            alt=''
-          />
+    <>
+      <div class='container'>
+        <div class='upperbox'>
+          <div class='circle'>
+            <img
+              src='https://i.pinimg.com/736x/b1/06/b3/b106b356085297efb35b87ef9122e03a.jpg'
+              alt=''
+            />
+          </div>
+          <div class='logo'>
+            <input
+              placeholder='Search...'
+              type='text'
+              className='searchBar'
+              onChange={handleInputChange}
+            />
+          </div>
+          <div class='circle'>
+            <img
+              src='https://i.pinimg.com/736x/b1/06/b3/b106b356085297efb35b87ef9122e03a.jpg'
+              alt=''
+            />
+          </div>
+          <div class='opening-box'></div>
         </div>
-        <div class='logo'>
-          <input
-            placeholder='Search...'
-            type='text'
-            className='searchBar'
-            onChange={handleInputChange}
-          />
-        </div>
-        <div class='circle'>
-          <img
-            src='https://i.pinimg.com/736x/b1/06/b3/b106b356085297efb35b87ef9122e03a.jpg'
-            alt=''
-          />
-        </div>
-        <div class='opening-box'></div>
-      </div>
-      {filteredData?.map((el) => (
-        <div>
-          <div
-            class='card'
-            key={el.id}
-            onClick={() =>
-              dispatch(getPokemonWithId(el.id)) && navigate(`/pokemon/${el.id}`)
-            }>
-            <div class='card-header'>
-              <img src={el.sprites.front_default} alt='' />
-            </div>
-            <div class='card-body'>
-              <h3>{el.name}</h3>
+        {filteredData?.map((el) => (
+          <div>
+            <div
+              class='card'
+              key={el.id}
+              onClick={() =>
+                dispatch(getPokemonWithId(el.id)) &&
+                navigate(`/pokemon/${el.id}`)
+              }>
+              <div class='card-header'>
+                <img src={el.sprites.front_default} alt='' />
+              </div>
+              <div class='card-body'>
+                <h3>{el.name}</h3>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+      <div className='btn-group'>
+        {prevUrl && (
+          <button
+            onClick={() => {
+              setPokemonData([]);
+              setUrl(prevUrl);
+            }}>
+            Previous
+          </button>
+        )}
+
+        {nextUrl && (
+          <button
+            onClick={() => {
+              setPokemonData([]);
+              setUrl(nextUrl);
+            }}>
+            Next
+          </button>
+        )}
+      </div>
+    </>
   );
 }
 

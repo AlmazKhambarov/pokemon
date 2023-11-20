@@ -196,3 +196,19 @@ body {
   height: 100vh;
   z-index: 9;
 }
+
+
+.btn-group{
+  width: 100%;
+    padding: 40px 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-group button{
+  padding: 15px 40px;
+  background-color: #3399ff;
+  border-radius: 5px;
+  outline: none;
+  font-size: 22px;
+  color:white;
+}
